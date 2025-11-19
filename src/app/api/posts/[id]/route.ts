@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/auth';
-import { prisma } from '@/lib/prisma';
-import { generateSlug } from '@/lib/utils';
+import { authOptions } from '../../../../lib/auth';
+import { prisma } from '../../../../lib/prisma';
+import { generateSlug } from '../../../../lib/utils';
 
 // GET /api/posts/[id] - Get single post
 export async function GET(

@@ -3,13 +3,13 @@
 
 import React, { useState } from 'react';
 import { useSession } from 'next-auth/react';
-import { Comment } from '@/types';
-import { Avatar } from '@/components/ui/Avatar';
+import { Comment } from '../../types';
+import { Avatar } from '../../components/ui/Avatar';
 import { CommentForm } from './CommentForm';
 import { MessageCircle, MoreHorizontal, Trash2, Flag } from 'lucide-react';
-import { formatDate } from '@/lib/utils';
+import { formatDate } from '../../lib/utils';
 import { useDeleteComment } from '../../hooks/UseComments';
-import { useToast } from '@/context/ToastContext';
+import { useToast } from '../../context/ToastContext';
 
 interface CommentItemProps {
   comment: Comment & { replies: Comment[] };

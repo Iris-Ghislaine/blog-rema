@@ -2,9 +2,9 @@
 
 import React, { useState } from 'react';
 import { useSession } from 'next-auth/react';
-import { Avatar } from '@/components/ui/Avatar';
-import { Button } from '@/components/ui/Button';
-import { Textarea } from '@/components/ui/Textarea';
+import { Avatar } from '../../components/ui/Avatar';
+import { Button } from '../../components/ui/Button';
+import { Textarea } from '../../components/ui/Textarea';
 
 interface CommentFormProps {
   onSubmit: (content: string) => void;

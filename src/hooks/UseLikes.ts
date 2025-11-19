@@ -1,6 +1,6 @@
 'use client';
 
-import { useMutation, useQueryClient } from 'react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useToast } from '@/context/ToastContext';
 
 async function toggleLike(postId: string): Promise<{ liked: boolean }> {
@@ -17,10 +17,11 @@ export function useToggleLike() {
   const queryClient = useQueryClient();
   const toast = useToast();
 
-  return useMutation(toggleLike, {
-    onSuccess: (data) => {
-      queryClient.invalidateQueries('posts');
-      queryClient.invalidateQueries('post');
+  return useMutation({
+    mutationFn: toggleLike,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['posts'] });
+      queryClient.invalidateQueries({ queryKey: ['post'] });
     },
     onError: () => {
       toast.error('Failed to like post');

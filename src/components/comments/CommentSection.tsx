@@ -2,11 +2,11 @@
 
 import React, { useState } from 'react';
 import { useSession } from 'next-auth/react';
-import { Comment } from '@/types';
+import { Comment } from '../../types';
 import { CommentItem } from './CommentItem';
 import { CommentForm } from './CommentForm';
 import { useComments, useCreateComment } from '../../hooks/UseComments';
-import { Spinner } from '@/components/ui/Spinner';
+import { Spinner } from '../../components/ui/Spinner';
 import { MessageCircle } from 'lucide-react';
 
 interface CommentSectionProps {

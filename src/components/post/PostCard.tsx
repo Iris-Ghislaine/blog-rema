@@ -3,11 +3,11 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Post } from '@/types';
-import { Avatar } from '@/components/ui/Avatar';
-import { Badge } from '@/components/ui/Badge';
+import { Post } from '../../types';
+import { Avatar } from '../../components/ui/Avatar';
+import { Badge } from '../../components/ui/Badge';
 import { Heart, MessageCircle, Bookmark } from 'lucide-react';
-import { formatDate, readingTime, truncate } from '@/lib/utils';
+import { formatDate, readingTime, truncate } from '../../lib/utils';
 import { useToggleLike } from '../../hooks/UseLikes';
 
 interface PostCardProps {

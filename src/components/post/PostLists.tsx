@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Post } from '@/types';
 import { PostCard } from './PostCard';
-import { Spinner } from '@/components/ui/Spinner';
+import { Spinner } from '../../components/ui/Spinner';
 
 interface PostListProps {
   posts: Post[];

@@ -2,13 +2,13 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Post } from '@/types';
+import { Post } from '../../types';
 import { Heart, MessageCircle, Share2, Bookmark, MoreHorizontal, Edit, Trash2 } from 'lucide-react';
 import { useToggleLike } from '../../hooks/UseLikes';
 import { useDeletePost } from '../../hooks/UsePosts';
-import { useToast } from '@/context/ToastContext';
-import { Modal } from '@/components/ui/Modal';
-import { Button } from '@/components/ui/Button';
+import { useToast } from '../../context/ToastContext';
+import { Modal } from '../../components/ui/Modal';
+import { Button } from '../../components/ui/Button';
 
 interface PostActionsProps {
   post: Post;

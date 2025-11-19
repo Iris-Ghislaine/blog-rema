@@ -1,6 +1,6 @@
 'use client';
 
-import { useMutation, useQueryClient } from 'react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useToast } from '@/context/ToastContext';
 
 async function toggleFollow(userId: string): Promise<{ following: boolean }> {
@@ -17,9 +17,10 @@ export function useToggleFollow() {
   const queryClient = useQueryClient();
   const toast = useToast();
 
-  return useMutation(toggleFollow, {
+  return useMutation({
+    mutationFn: toggleFollow,
     onSuccess: (data, userId) => {
-      queryClient.invalidateQueries(['user', userId]);
+      queryClient.invalidateQueries({ queryKey: ['user', userId] });
       toast.success(data.following ? 'Followed successfully!' : 'Unfollowed');
     },
     onError: () => {

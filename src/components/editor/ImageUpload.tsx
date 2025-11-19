@@ -3,8 +3,8 @@
 import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import { Upload, X, Loader2 } from 'lucide-react';
-import { uploadImage } from '@/lib/supabase';
-import { useToast } from '@/context/ToastContext';
+import { uploadImage } from '../../lib/supabase';
+import { useToast } from '../../context/ToastContext';
 
 interface ImageUploadProps {
   value?: string;

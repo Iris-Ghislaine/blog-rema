@@ -1,6 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
+// import { PrismaAdapter } from 'next-auth/react';
+
 import bcrypt from 'bcryptjs';
 import { prisma } from './prisma';
 

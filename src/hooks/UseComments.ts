@@ -1,6 +1,6 @@
 'use client';
 
-import { useQuery, useMutation, useQueryClient } from 'react-query';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Comment } from '@/types';
 import { useToast } from '@/context/ToastContext';
 
@@ -30,7 +30,9 @@ async function deleteComment(id: string): Promise<void> {
 }
 
 export function useComments(postId: string) {
-  return useQuery(['comments', postId], () => fetchComments(postId), {
+  return useQuery({
+    queryKey: ['comments', postId],
+    queryFn: () => fetchComments(postId),
     enabled: !!postId,
   });
 }
@@ -39,9 +41,10 @@ export function useCreateComment() {
   const queryClient = useQueryClient();
   const toast = useToast();
 
-  return useMutation(createComment, {
+  return useMutation({
+    mutationFn: createComment,
     onSuccess: (data) => {
-      queryClient.invalidateQueries(['comments', data.postId]);
+      queryClient.invalidateQueries({ queryKey: ['comments', data.postId] });
       toast.success('Comment added!');
     },
     onError: () => {
@@ -54,9 +57,10 @@ export function useDeleteComment() {
   const queryClient = useQueryClient();
   const toast = useToast();
 
-  return useMutation(deleteComment, {
+  return useMutation({
+    mutationFn: deleteComment,
     onSuccess: () => {
-      queryClient.invalidateQueries('comments');
+      queryClient.invalidateQueries({ queryKey: ['comments'] });
       toast.success('Comment deleted!');
     },
     onError: () => {
