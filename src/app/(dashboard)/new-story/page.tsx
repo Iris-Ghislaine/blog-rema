@@ -1,6 +1,6 @@
 'use client';
 
-import  { useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { RichTextEditor } from '../../../components/editor/RichTextEditor';
@@ -31,10 +31,18 @@ export default function NewStoryPage() {
   const [isSaving, setIsSaving] = useState(false);
   const [isPublishing, setIsPublishing] = useState(false);
 
+
+
+useEffect(() => {
   if (!session) {
     router.push('/login');
-    return null;
   }
+}, [session]);
+
+if (!session) {
+  return null;
+}
+
 
   const handleSaveDraft = async () => {
     if (!formData.title || !formData.content) {

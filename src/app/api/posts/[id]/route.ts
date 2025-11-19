@@ -8,12 +8,14 @@ import { generateSlug } from '../../../../lib/utils';
 // GET /api/posts/[id] - Get single post
 export async function GET(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> } // FIXED: params is Promise
 ) {
   try {
+    const { id } = await params; // FIXED: await params
+    
     const post = await prisma.post.findFirst({
       where: {
-        OR: [{ id: params.id }, { slug: params.id }],
+        OR: [{ id }, { slug: id }],
       },
       include: {
         author: {
@@ -52,9 +54,10 @@ export async function GET(
 // PUT /api/posts/[id] - Update post
 export async function PUT(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> } // FIXED
 ) {
   try {
+    const { id } = await params; // FIXED: await params
     const session = await getServerSession(authOptions);
 
     if (!session?.user) {
@@ -62,7 +65,7 @@ export async function PUT(
     }
 
     const post = await prisma.post.findUnique({
-      where: { id: params.id },
+      where: { id },
     });
 
     if (!post) {
@@ -76,7 +79,6 @@ export async function PUT(
     const body = await request.json();
     const { title, content, excerpt, coverImage, published, tags } = body;
 
-    // Handle tags if provided
     const updateData: any = {
       title,
       content,
@@ -90,7 +92,6 @@ export async function PUT(
     }
 
     if (tags && Array.isArray(tags)) {
-      // Disconnect all existing tags and connect new ones
       const tagConnections = [];
       for (const tagName of tags) {
         const tagSlug = generateSlug(tagName);
@@ -109,7 +110,7 @@ export async function PUT(
     }
 
     const updatedPost = await prisma.post.update({
-      where: { id: params.id },
+      where: { id },
       data: updateData,
       include: {
         author: {
@@ -137,9 +138,10 @@ export async function PUT(
 // DELETE /api/posts/[id] - Delete post
 export async function DELETE(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> } // FIXED
 ) {
   try {
+    const { id } = await params; // FIXED: await params
     const session = await getServerSession(authOptions);
 
     if (!session?.user) {
@@ -147,7 +149,7 @@ export async function DELETE(
     }
 
     const post = await prisma.post.findUnique({
-      where: { id: params.id },
+      where: { id },
     });
 
     if (!post) {
@@ -159,7 +161,7 @@ export async function DELETE(
     }
 
     await prisma.post.delete({
-      where: { id: params.id },
+      where: { id },
     });
 
     return NextResponse.json({ message: 'Post deleted successfully' });

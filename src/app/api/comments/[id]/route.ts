@@ -3,12 +3,12 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '../../../../lib/auth';
 import { prisma } from '../../../../lib/prisma';
 
-// DELETE /api/comments/[id] - Delete comment
 export async function DELETE(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> } // FIXED
 ) {
   try {
+    const { id } = await params; // FIXED: await params
     const session = await getServerSession(authOptions);
 
     if (!session?.user) {
@@ -16,7 +16,7 @@ export async function DELETE(
     }
 
     const comment = await prisma.comment.findUnique({
-      where: { id: params.id },
+      where: { id },
     });
 
     if (!comment) {
@@ -26,13 +26,12 @@ export async function DELETE(
       );
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     if (comment.authorId !== (session.user as any).id) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
     await prisma.comment.delete({
-      where: { id: params.id },
+      where: { id },
     });
 
     return NextResponse.json({ message: 'Comment deleted successfully' });

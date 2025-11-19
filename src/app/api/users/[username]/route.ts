@@ -1,14 +1,15 @@
 import { NextResponse } from 'next/server';
-import { prisma } from '@/lib/prisma';
+import { prisma } from '../../../../lib/prisma';
 
-// GET /api/users/[username] - Get user profile
 export async function GET(
   request: Request,
-  { params }: { params: { username: string } }
+  { params }: { params: Promise<{ username: string }> } // FIXED
 ) {
   try {
+    const { username } = await params; // FIXED: await params
+    
     const user = await prisma.user.findUnique({
-      where: { username: params.username },
+      where: { username },
       select: {
         id: true,
         name: true,
