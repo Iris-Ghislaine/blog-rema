@@ -68,12 +68,12 @@ export default function SignupPage() {
             <BookOpen className="text-white" size={32} />
           </div>
           <span className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-blue-900 bg-clip-text text-transparent">
-            Medium
+            Rema-Blog
           </span>
         </Link>
 
         <div className="bg-white rounded-2xl shadow-xl p-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Join Medium</h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Join Rema-Blog</h1>
           <p className="text-gray-600 mb-8">Create your account to start writing</p>
 
           <form onSubmit={handleSubmit} className="space-y-6">

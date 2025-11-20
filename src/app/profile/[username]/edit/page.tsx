@@ -107,7 +107,7 @@ export default function EditProfilePage({ params }: { params: Promise<{ username
       <div className="max-w-3xl mx-auto px-4">
         {/* Header */}
         <div className="flex items-center gap-3 mb-8">
-          <div className="bg-gradient-to-r from-green-600 to-emerald-600 p-3 rounded-lg">
+          <div className="bg-gradient-to-r from-orange-600 to-blue-900 p-3 rounded-lg">
             <User className="text-white" size={32} />
           </div>
           <div>

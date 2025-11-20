@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Post } from '../../types';
-import { Heart, MessageCircle, Share2, Bookmark, MoreHorizontal, Edit, Trash2 } from 'lucide-react';
+import { Heart, MessageCircle, Share2, MoreHorizontal, Edit, Trash2 } from 'lucide-react';
 import { useToggleLike } from '../../hooks/UseLikes';
 import { useDeletePost } from '../../hooks/UsePosts';
 import { useToast } from '../../context/ToastContext';
@@ -74,9 +74,6 @@ export function PostActions({ post, isAuthor }: PostActionsProps) {
 
         {/* Right Actions */}
         <div className="flex items-center gap-4">
-          <button className="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-full transition-colors">
-            <Bookmark size={22} />
-          </button>
 
           <button
             onClick={handleShare}

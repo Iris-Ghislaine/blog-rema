@@ -12,8 +12,8 @@ export default function HomePage() {
 
   const filters = [
     { id: 'latest', label: 'Latest', icon: Clock },
-    { id: 'trending', label: 'Trending', icon: TrendingUp },
-    { id: 'following', label: 'Following', icon: Star },
+    // { id: 'trending', label: 'Trending', icon: TrendingUp },
+    // { id: 'following', label: 'Following', icon: Star },
   ];
 
   return (

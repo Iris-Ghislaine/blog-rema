@@ -25,36 +25,36 @@ export function Footer() {
           <div>
             <h3 className="font-semibold mb-4">Product</h3>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li><Link href="/about" className="hover:text-white transition-colors">About</Link></li>
-              <li><Link href="/membership" className="hover:text-white transition-colors">Membership</Link></li>
+              <li className="hover:text-white transition-colors">About</li>
+              <li className="hover:text-white transition-colors">Membership</li>
               <li><Link href="/write" className="hover:text-white transition-colors">Write</Link></li>
-              <li><Link href="/careers" className="hover:text-white transition-colors">Careers</Link></li>
+              <li className="hover:text-white transition-colors">Careers</li>
             </ul>
           </div>
 
           <div>
             <h3 className="font-semibold mb-4">Community</h3>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li><Link href="/guidelines" className="hover:text-white transition-colors">Guidelines</Link></li>
-              <li><Link href="/help" className="hover:text-white transition-colors">Help</Link></li>
-              <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
+              <li className="hover:text-white transition-colors">Guidelines</li>
+              <li className="hover:text-white transition-colors">Help</li>
+              <li className="hover:text-white transition-colors">Contact</li>
             </ul>
           </div>
 
           <div>
             <h3 className="font-semibold mb-4">Legal</h3>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li><Link href="/terms" className="hover:text-white transition-colors">Terms</Link></li>
-              <li><Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link></li>
-              <li><Link href="/cookies" className="hover:text-white transition-colors">Cookies</Link></li>
+              <li className="hover:text-white transition-colors">Terms</li>
+              <li className="hover:text-white transition-colors">Privacy</li>
+              <li className="hover:text-white transition-colors">Cookies</li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom */}
+      
         <div className="flex flex-col md:flex-row items-center justify-between mt-12 pt-8 border-t border-gray-800">
           <p className="text-sm text-gray-400">
-            © 2024 Medium Clone. All rights reserved.
+            © 2024 Rema-Blog. All rights reserved.
           </p>
           <div className="flex items-center gap-4 mt-4 md:mt-0">
             <a href="#" className="text-gray-400 hover:text-white transition-colors">

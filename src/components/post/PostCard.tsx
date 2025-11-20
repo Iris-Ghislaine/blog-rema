@@ -157,9 +157,7 @@ export function PostCard({ post, variant = 'default' }: PostCardProps) {
                 <span className="text-sm">{post._count?.comments || 0}</span>
               </div>
             </div>
-            <button className="text-gray-500 hover:text-gray-700 transition-colors">
-              <Bookmark size={20} />
-            </button>
+        
           </div>
         </div>
       </article>

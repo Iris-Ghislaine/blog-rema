@@ -26,14 +26,14 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 bg-white border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <div className="bg-gradient-to-r from-orange-600 to-blue-900 p-2 rounded-lg">
               <BookOpen className="text-white" size={24} />
             </div>
             <span className="text-2xl font-bold bg-gradient-to-r from-orange-600 to-blue-900 bg-clip-text text-transparent">
-              Medium
+             Rema-Blog
             </span>
           </Link>
 
@@ -62,11 +62,6 @@ export function Header() {
                     Write
                   </Button>
                 </Link>
-
-                {/* Notifications */}
-                <button className="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-full transition-colors">
-                  <Bell size={22} />
-                </button>
 
                 {/* Profile Dropdown */}
                 <div className="relative">
@@ -173,7 +168,7 @@ export function Header() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search..."
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-900"
                 />
               </form>
             </div>
