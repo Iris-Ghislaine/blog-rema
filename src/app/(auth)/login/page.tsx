@@ -52,14 +52,14 @@ export default function LoginPage() {
             <BookOpen className="text-white" size={32} />
           </div>
           <span className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-blue-900 bg-clip-text text-transparent">
-            Medium
+            Rema-Blog
           </span>
         </Link>
 
         {/* Form */}
         <div className="bg-white rounded-2xl shadow-xl p-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Welcome back</h1>
-          <p className="text-gray-600 mb-8">Sign in to continue to Medium</p>
+          <p className="text-gray-600 mb-8">Sign in to continue to Remablog</p>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <Input

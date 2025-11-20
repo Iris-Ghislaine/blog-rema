@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../../../../lib/auth';
@@ -58,7 +59,7 @@ export async function GET(
   }
 }
 
-// PUT /api/users/[username] - Update user profile
+// NEW: PUT method for updating user profile
 export async function PUT(
   request: Request,
   { params }: { params: Promise<{ username: string }> }
@@ -71,15 +72,8 @@ export async function PUT(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const user = await prisma.user.findUnique({
-      where: { username },
-    });
-
-    if (!user) {
-      return NextResponse.json({ error: 'User not found' }, { status: 404 });
-    }
-
-    if (user.id !== (session.user as any).id) {
+    // Check if user owns this profile
+    if ((session.user as any).username !== username) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
@@ -87,11 +81,11 @@ export async function PUT(
     const { name, bio, avatar } = body;
 
     const updatedUser = await prisma.user.update({
-      where: { id: user.id },
+      where: { username },
       data: {
-        ...(name && { name }),
-        ...(bio !== undefined && { bio }),
-        ...(avatar !== undefined && { avatar }),
+        name,
+        bio,
+        avatar,
       },
       select: {
         id: true,
@@ -99,14 +93,7 @@ export async function PUT(
         username: true,
         bio: true,
         avatar: true,
-        createdAt: true,
-        _count: {
-          select: {
-            posts: true,
-            followers: true,
-            following: true,
-          },
-        },
+        email: true,
       },
     });
 
