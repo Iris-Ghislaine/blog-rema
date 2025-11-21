@@ -191,18 +191,6 @@ export default function EditProfilePage({ params }: { params: Promise<{ username
             </Button>
           </div>
         </form>
-
-        {/* Info Box */}
-        <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded mt-6">
-          <h3 className="font-semibold text-blue-900 mb-2">
-            💡 Profile Tips
-          </h3>
-          <ul className="text-blue-800 text-sm space-y-1">
-            <li>• Use a clear, professional photo</li>
-            <li>• Write a compelling bio (max 160 characters recommended)</li>
-            <li>• Your profile helps readers connect with your stories</li>
-          </ul>
-        </div>
       </div>
     </div>
   );

@@ -34,7 +34,7 @@ export function PostCard({ post, variant = 'default' }: PostCardProps) {
                 src={post.coverImage}
                 alt={post.title}
                 fill
-                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                className="object-cover group-hover:scale-105 transition-transform duration-300 "
               />
             )}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />

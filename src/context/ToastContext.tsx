@@ -19,7 +19,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
         duration: 4000,
         position: 'top-right',
         style: {
-          background: '#10b981',
+          background: '#Ff8c00',
           color: '#fff',
           padding: '16px',
           borderRadius: '8px',

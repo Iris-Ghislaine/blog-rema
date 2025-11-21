@@ -124,7 +124,6 @@
 //     </div>
 //   );
 // }
-
 'use client';
 
 import React, { useState, useRef } from 'react';
@@ -159,25 +158,27 @@ export function ImageUpload({ value, onChange, label }: ImageUploadProps) {
       return;
     }
 
+    // Generate preview immediately
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setPreview(reader.result as string);
+    };
+    reader.readAsDataURL(file);
+
     try {
       setIsUploading(true);
 
-      // Preview image
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPreview(reader.result as string);
-      };
-      reader.readAsDataURL(file);
-
       // Upload to Supabase
-      const url = await uploadImage(file, 'covers');
+      const url = await uploadImage(file, 'covers'); // ensure 'covers' bucket exists
       onChange(url);
-
       toast.success('Image uploaded successfully!');
-    } catch (error) {
-      console.error(error);
-      toast.error('Failed to upload image');
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      console.error('ImageUpload error:', error);
+      toast.error(error?.message || 'Failed to upload image');
+      // Clear preview if upload failed
       setPreview(null);
+      onChange('');
     } finally {
       setIsUploading(false);
     }
@@ -216,12 +217,12 @@ export function ImageUpload({ value, onChange, label }: ImageUploadProps) {
         >
           {isUploading ? (
             <>
-              <Loader2 className="w-12 h-12 text-orange-600 animate-spin mb-4" />
+              <Loader2 className="w-12 h-12 animate-spin mb-4" />
               <p className="text-gray-600">Uploading...</p>
             </>
           ) : (
             <>
-              <Upload className="w-12 h-12 text-gray-400 mb-4" />
+              <Upload className="w-12 h-12 mb-4" />
               <p className="text-gray-600 font-medium mb-1">Click to upload cover image</p>
               <p className="text-sm text-gray-400">PNG, JPG up to 5MB</p>
             </>

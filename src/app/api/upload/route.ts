@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/auth';
-import { uploadImage } from '@/lib/supabase';
+import { authOptions } from '../../../lib/auth';
+import { uploadImage } from '../../../lib/supabase';
 
 // POST /api/upload - Upload image to Supabase
 export async function POST(request: Request) {
