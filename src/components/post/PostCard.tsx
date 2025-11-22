@@ -69,7 +69,7 @@ export function PostCard({ post, variant = 'default' }: PostCardProps) {
   if (variant === 'compact') {
     return (
       <Link href={`/post/${post.slug}`}>
-        <article className="group flex gap-4 p-4 hover:bg-gray-50 rounded-xl transition-colors cursor-pointer">
+        <article className="group flex gap-4 p-10 hover:bg-gray-50 rounded-xl transition-colors cursor-pointer">
           {post.coverImage && (
             <div className="relative w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
               <Image

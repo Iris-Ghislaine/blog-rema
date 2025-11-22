@@ -118,7 +118,7 @@ export default function ProfilePage({
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-white border-b">
+      <div className="bg-white">
         <div className="max-w-5xl mx-auto px-4 py-12">
           <div className="flex items-start gap-8">
             <Avatar src={user.avatar} size="xl" />
@@ -184,7 +184,7 @@ export default function ProfilePage({
           </div>
 
           {/* Tabs */}
-          <div className="flex gap-8 mt-8 border-b">
+          <div className="flex gap-8 mt-8">
             <button
               onClick={() => setActiveTab("posts")}
               className={`pb-4 font-medium transition-colors ${
@@ -209,23 +209,55 @@ export default function ProfilePage({
         </div>
       </div>
 
-      {/* Content */}
-      <div className="max-w-5xl mx-auto px-4 py-12">
-        {activeTab === "posts" ? (
-          <PostList
-            posts={posts || []}
-            isLoading={postsLoading}
-            variant="compact"
-          />
-        ) : (
-          <div className="bg-white rounded-xl p-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              About {user.name}
-            </h2>
-            <p className="text-gray-700">{user.bio || "No bio available."}</p>
+{/* Content */}
+<div className="max-w-5xl mx-auto px-4 py-12 grid gap-6">
+  {activeTab === "posts" ? (
+    <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {postsLoading ? (
+        <div className="col-span-full flex justify-center">
+          <Spinner size="lg" />
+        </div>
+      ) : posts && posts.length > 0 ? (
+        posts.map((post: any) => (
+          <div
+            key={post.id}
+            className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col"
+          >
+            {post.image && (
+              <img
+                src={post.image}
+                alt={post.title}
+                className="w-full h-48 object-cover"
+              />
+            )}
+            <div className="p-4 flex flex-col flex-1">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
+                {post.title}
+              </h3>
+              <p className="text-gray-700 text-sm flex-1 line-clamp-3">
+                {post.content}
+              </p>
+              <div className="mt-4 flex items-center justify-between text-gray-500 text-xs">
+                <span>{formatDate(post.createdAt)}</span>
+                <span>{post.likes} ❤️</span>
+              </div>
+            </div>
           </div>
-        )}
-      </div>
+        ))
+      ) : (
+        <p className="col-span-full text-center text-gray-500">
+          No posts available.
+        </p>
+      )}
+    </div>
+  ) : (
+    <div className="bg-white rounded-2xl p-8 shadow-md">
+      <h2 className="text-2xl font-bold text-gray-900 mb-4">About {user.name}</h2>
+      <p className="text-gray-700 text-lg">{user.bio || "No bio available."}</p>
+    </div>
+  )}
+</div>
+
     </div>
   );
 }
