@@ -280,8 +280,53 @@ CLOUDINARY_API_SECRET    # For server-side uploads
 ---
 ### screenshots
 
-# home page
-![alt text](image-1.png)
+# Sign In page
+
+
+# home page before logging in
+
+![alt text](image-3.png)
+
+# Sign In
+
+![alt text](image-4.png)
+
+# Sign Up
+
+![alt text](image-5.png)
+
+# home page after logging in
+
+![alt text](image-6.png)
+
+## fetching posts according to tags
+
+![alt text](image-2.png)
+
+## write section
+
+![alt text](image-7.png)
+
+## profile
+
+![alt text](image-8.png)
+
+## edit profile
+
+![alt text](image-9.png)
+
+## settings page
+
+![alt text](image-10.png)
+
+## Drafts page
+
+![alt text](image-11.png)
+
+## footer
+
+![alt text](image-12.png)
+
 ## Testing
 
 ### Manual Testing Checklist
@@ -449,17 +494,7 @@ POST   /api/follow               // Toggle follow
 - [ ] Notifications
 - [ ] Email verification
 - [ ] Password reset
-
-### Planned
 - [ ] Dark mode
-- [ ] Reading lists
-- [ ] Post analytics
-- [ ] Comment moderation
-- [ ] Rich embeds (YouTube, Twitter)
-- [ ] Series/Collections
-- [ ] Draft collaboration
-- [ ] Monetization features
-
 
 ### Code Style
 
