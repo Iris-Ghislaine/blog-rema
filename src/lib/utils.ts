@@ -7,12 +7,41 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function generateSlug(title: string): string {
+  
+  if (title.length < 50) {
+    
+    return slugify(title, {
+      lower: true,
+      strict: true,
+      remove: /[*+~.()'"!:@]/g,
+    });
+  }
+  
+  
   return slugify(title, {
     lower: true,
     strict: true,
     remove: /[*+~.()'"!:@]/g,
   }) + '-' + Math.random().toString(36).substring(2, 9);
 }
+
+// Add this helper for consistent tag slugs
+export function generateTagSlug(tagName: string): string {
+  return slugify(tagName, {
+    lower: true,
+    strict: true,
+    remove: /[*+~.()'"!:@]/g,
+  });
+}
+
+
+// export function generateSlug(title: string): string {
+//   return slugify(title, {
+//     lower: true,
+//     strict: true,
+//     remove: /[*+~.()'"!:@]/g,
+//   }) + '-' + Math.random().toString(36).substring(2, 9);
+// }
 
 export function formatDate(date: Date | string): string {
   return new Date(date).toLocaleDateString('en-US', {
