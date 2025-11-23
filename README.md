@@ -2,7 +2,7 @@
 
 A feature-rich, Medium-inspired blogging platform built with Next.js 14, Prisma, Supabase, and Cloudinary.
 
-![Next.js](https://img.shields.io/badge/Next.js-16.0-black)
+![Next.js](https://img.shields.io/badge/Next.js-16.0-yellow)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
 ![Prisma](https://img.shields.io/badge/Prisma-6.9-2D3748)
 
@@ -278,6 +278,9 @@ CLOUDINARY_API_SECRET    # For server-side uploads
 ```
 
 ---
+### screenshots
+
+# home page
 
 ## Testing
 
