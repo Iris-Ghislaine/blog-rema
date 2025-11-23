@@ -1,21 +1,21 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { Post } from '../../types';
-import { Avatar } from '../../components/ui/Avatar';
-import { Badge } from '../../components/ui/Badge';
-import { Heart, MessageCircle, Bookmark } from 'lucide-react';
-import { formatDate, readingTime, truncate } from '../../lib/utils';
-import { useToggleLike } from '../../hooks/UseLikes';
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { Post } from "../../types";
+import { Avatar } from "../../components/ui/Avatar";
+import { Badge } from "../../components/ui/Badge";
+import { Heart, MessageCircle, Bookmark } from "lucide-react";
+import { formatDate, readingTime, truncate } from "../../lib/utils";
+import { useToggleLike } from "../../hooks/UseLikes";
 
 interface PostCardProps {
   post: Post;
-  variant?: 'default' | 'featured' | 'compact';
+  variant?: "default" | "featured" | "compact";
 }
 
-export function PostCard({ post, variant = 'default' }: PostCardProps) {
+export function PostCard({ post, variant = "default" }: PostCardProps) {
   const { mutate: toggleLike } = useToggleLike();
 
   const handleLike = (e: React.MouseEvent) => {
@@ -24,7 +24,7 @@ export function PostCard({ post, variant = 'default' }: PostCardProps) {
     toggleLike(post.id);
   };
 
-  if (variant === 'featured') {
+  if (variant === "featured") {
     return (
       <Link href={`/post/${post.slug}`}>
         <article className="group cursor-pointer">
@@ -43,21 +43,29 @@ export function PostCard({ post, variant = 'default' }: PostCardProps) {
                 <Avatar src={post.author.avatar} size="md" />
                 <div>
                   <p className="font-medium">{post.author.name}</p>
-                  <p className="text-sm text-gray-300">{formatDate(post.createdAt)}</p>
+                  <p className="text-sm text-gray-300">
+                    {formatDate(post.createdAt)}
+                  </p>
                 </div>
               </div>
               <h2 className="text-3xl font-bold mb-3 line-clamp-2 group-hover:text-orange-400 transition-colors">
                 {post.title}
               </h2>
               {post.excerpt && (
-                <p className="text-gray-200 line-clamp-2 mb-4">{post.excerpt}</p>
+                <p className="text-gray-200 line-clamp-2 mb-4">
+                  {post.excerpt}
+                </p>
               )}
               <div className="flex items-center gap-4">
-                {post.tags.slice(0, 3).map((tag) => (
-                  <Badge key={tag.id} variant="primary">
-                    {tag.name}
-                  </Badge>
-                ))}
+                {post.tags && post.tags.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {post.tags.slice(0, 3).map((tag) => (
+                      <Link key={tag.id} href={`/tag/${tag.slug}`}>
+                        <Badge variant="default">{tag.name}</Badge>
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -66,7 +74,7 @@ export function PostCard({ post, variant = 'default' }: PostCardProps) {
     );
   }
 
-  if (variant === 'compact') {
+  if (variant === "compact") {
     return (
       <Link href={`/post/${post.slug}`}>
         <article className="group flex gap-4 p-10 hover:bg-gray-50 rounded-xl transition-colors cursor-pointer">
@@ -113,9 +121,12 @@ export function PostCard({ post, variant = 'default' }: PostCardProps) {
           <div className="flex items-center gap-3 mb-4">
             <Avatar src={post.author.avatar} size="sm" />
             <div className="flex-1 min-w-0">
-              <p className="font-medium text-gray-900 truncate">{post.author.name}</p>
+              <p className="font-medium text-gray-900 truncate">
+                {post.author.name}
+              </p>
               <p className="text-sm text-gray-500">
-                {formatDate(post.createdAt)} · {readingTime(post.content)} min read
+                {formatDate(post.createdAt)} · {readingTime(post.content)} min
+                read
               </p>
             </div>
           </div>
@@ -148,7 +159,7 @@ export function PostCard({ post, variant = 'default' }: PostCardProps) {
               >
                 <Heart
                   size={20}
-                  className={post.isLiked ? 'fill-red-500 text-red-500' : ''}
+                  className={post.isLiked ? "fill-red-500 text-red-500" : ""}
                 />
                 <span className="text-sm">{post._count?.likes || 0}</span>
               </button>
@@ -157,7 +168,6 @@ export function PostCard({ post, variant = 'default' }: PostCardProps) {
                 <span className="text-sm">{post._count?.comments || 0}</span>
               </div>
             </div>
-        
           </div>
         </div>
       </article>

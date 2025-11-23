@@ -1,10 +1,10 @@
-// import { type ClassValue, clsx } from 'clsx';
-// import { twMerge } from 'tailwind-merge';
+import { type ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 // import slugify from 'slugify';
 
-// export function cn(...inputs: ClassValue[]) {
-//   return twMerge(clsx(inputs));
-// }
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
 
 // export function generateSlug(title: string): string {
   
