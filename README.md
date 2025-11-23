@@ -5,7 +5,7 @@ A feature-rich, Medium-inspired blogging platform built with Next.js 14, Prisma,
 ![Next.js](https://img.shields.io/badge/Next.js-14.0-black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
 ![Prisma](https://img.shields.io/badge/Prisma-5.7-2D3748)
-![License](https://img.shields.io/badge/license-MIT-green)
+
 
 ## Features
 
